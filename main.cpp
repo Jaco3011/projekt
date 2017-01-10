@@ -1,4 +1,4 @@
-#include <iostream.h>
+#include <iostream>
 #include <string>
 #include <fstream>
 
@@ -6,10 +6,10 @@ using namespace std ;
 
 int main () {
   string sciezka ;
-  cout >> "Podaj ścieżkę do pliku" << endl ;
+  cout << "Podaj ścieżkę do pliku" << endl ;
   cin >> sciezka ;
-  fstream baza(sciezka, ios::in | ios::out) ;
-  baza.open() ;
+  fstream baza ;
+  baza.open(sciezka, ios::in | ios::out) ;
   if (baza.is_open()) {
     cout << "Otwarte" << endl ;
   } else {
