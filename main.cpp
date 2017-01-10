@@ -14,7 +14,8 @@ int main () {
     cout << "Otwarte" << endl ;
   } else {
     cout << "Problemy z otwarciem" << endl ;
-  }
+  } ;
+  baza.flush() ;
   baza.close() ;
   return 0 ;
 } ;
