@@ -1,23 +1,50 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-
+#include <list>
 using namespace std ;
-
+class klient {
+  public:
+  int numer ;
+  string imie;
+  string nazwisko ;
+  int wiek ;
+  public :
+} ; //koniec class kilent
+class nasze {
+  public: 
+  int numer ;
+  string nazwa ;
+} ;
+class wypozyczalnia {
+  list <klient> ludzie ;
+  list <naze> przedmioty ;
+} ;
 int main () {
   string sciezka ;
   cout << "Podaj ścieżkę do plików" << endl ;
   cin >> sciezka ;
-  fstream baza1 ;
-  fstream baza2 ;
-  fstream baza3 ;
-  baza1.open((sciezka.c_str()+"jeden.txt"), ios::in | ios::out) ;
-  if (baza1.is_open()) {
-    cout << "Otwarte" << endl ;
+  fstream dane ;
+  string sciezki[3] ;
+  fstream baza[3] ;
+  dane.open((sciezka.c_str()+"dane.txt"), ios::in) ;
+  if (dane.is_open()) {
+    cout << "Wczytywanie ścieżek do plików" << endl ;
+    int i=0 ;
+    while (i<3 && !dane.eof()) {
+      getline(dane, sciezki[i]) ;
+    } ;
+    if (sciezki[2]="" && dane.eof()) {
+      cout << "Ścieżki nie zostały wczytanie" << endl ;
+    } else {
+      cout << "Wczytano ścieżki dostępu" << endl ;
+    } ;
+  dane.close() ;
   } else {
-    cout << "Problemy z otwarciem" << endl ;
+    cout << "Problemy z otwarciem ścieżek do plików" << endl ;
   } ;
-  baza1.flush() ;
-  baza1.close() ;
+  
+  while(true){ //początek pętli głównej
+  } ; // koniec pętli głównej
   return 0 ;
 } ;
