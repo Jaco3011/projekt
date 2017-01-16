@@ -18,7 +18,7 @@ class nasze {
 } ;
 class wypozyczalnia {
   list <klient> ludzie ;
-  list <naze> przedmioty ;
+  list <nasze> przedmioty ;
 } ;
 int main () {
   string sciezka ;
