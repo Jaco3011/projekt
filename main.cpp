@@ -58,6 +58,7 @@ int main () {
     } else {
       cout << "Wczytano ścieżki dostępu" << endl ;
     } ;
+  dane.clear(goodbit) ;
   dane.close() ;
   } else {
     cout << "Problemy z otwarciem ścieżek do plików" << endl ;
