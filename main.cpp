@@ -27,14 +27,15 @@ int main () {
   fstream dane ;
   string sciezki[3] ;
   fstream baza[3] ;
-  dane.open((sciezka.c_str()+"dane.txt"), ios::in) ;
+  sciezka+="dane.txt" ;
+  dane.open((sciezka.c_str()), ios::in) ;
   if (dane.is_open()) {
     cout << "Wczytywanie ścieżek do plików" << endl ;
     int i=0 ;
     while (i<3 && !dane.eof()) {
       getline(dane, sciezki[i]) ;
     } ;
-    if (sciezki[2]="" && dane.eof()) {
+    if (sciezki[2]=="" && dane.eof()) {
       cout << "Ścieżki nie zostały wczytanie" << endl ;
     } else {
       cout << "Wczytano ścieżki dostępu" << endl ;
