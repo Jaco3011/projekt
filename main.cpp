@@ -20,6 +20,12 @@ class wypozyczalnia {
   list <klient> ludzie ;
   list <nasze> przedmioty ;
 } ;
+void sciezkanowa(string * tamto) {
+  string a ;
+  cout << "Podaj sciezke do plików" << endl ;
+  cin >> a ;
+  tamto=a ;
+} ;
 /*void wczytywanie(fstream * skad, fstream * dalsze){
 
 } ; //koniec wczytywania
@@ -39,12 +45,10 @@ bool wszystkodobrze(int a, fstream * dane){
 } ;
 int main () {
   string sciezka ;
-  cout << "Podaj ścieżkę do plików" << endl ;
-  cin >> sciezka ;
+  sciezkanowa(sciezka) ;
   fstream dane ;
   string sciezki[3] ;
   fstream baza[3] ;
-  sciezka+="dane.txt" ;
   dane.open((sciezka.c_str()), ios::in) ;
   if (dane.is_open()) {
     cout << "Wczytywanie ścieżek do plików" << endl ;
