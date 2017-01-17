@@ -4,11 +4,11 @@
 #include <string>
 #include <fstream>
 using namespace std ;
-void sciezkanowa(string * tamto) {
+string sciezkanowa() {
   string a ;
   cout << "Podaj sciezke do plików" << endl ;
   cin >> a ;
-  tamto=a ;
+  return a ;
 } ;
 bool wszystkodobrze(int a, fstream * dane){
     for(int i=0; i<a; i++){
