@@ -32,6 +32,7 @@ int main () {
   wypozyczalnia Ten ;
   bool poprawnie=false ;
   while(true){
+    gotoxy(0,0) ;
     WypiszMenu(poprawnie) ;
     while(!kbhit()) {
     } ;
