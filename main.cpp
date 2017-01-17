@@ -33,12 +33,12 @@ int main () {
   wypozyczalnia Ten ;
   bool poprawnie=false ;
   char ster ;
-  while(true){
+  while(true){ //początek pętli głównej
     gotoxy(0,0) ;
     WypiszMenu(poprawnie) ;
     ster=getchar() ;
     switch(ster) {
     } ;
-  } ;
+  } ; //koniec pętli głównej
   return 0 ;
 } ;
