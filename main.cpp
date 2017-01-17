@@ -31,12 +31,13 @@ int main () {
   fstream baza[3] ;
   wypozyczalnia Ten ;
   bool poprawnie=false ;
+  char ster ;
   while(true){
     gotoxy(0,0) ;
     WypiszMenu(poprawnie) ;
-    while(!kbhit()) {
+    ster=getchar() ;
+    switch(ster) {
     } ;
-
   } ;
   return 0 ;
 } ;
