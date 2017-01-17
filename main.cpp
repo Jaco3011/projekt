@@ -3,6 +3,7 @@
 #include <fstream>
 #include <list>
 #include <cstdlib>
+#include <conio.h>
 #include "funkcje.hpp"
 using namespace std ;
 class klient {
@@ -33,8 +34,8 @@ int main () {
   while(true){
     WypiszMenu(poprawnie) ;
     while(!kbhit()) {
-    } ; 
-    
+    } ;
+
   } ;
   return 0 ;
 } ;
