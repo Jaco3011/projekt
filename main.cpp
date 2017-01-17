@@ -4,6 +4,7 @@
 #include <list>
 #include <cstdlib>
 #include <conio.h>
+#include <stdio.h>
 #include "funkcje.hpp"
 using namespace std ;
 class klient {
