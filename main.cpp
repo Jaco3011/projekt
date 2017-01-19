@@ -32,12 +32,11 @@ int main () {
   fstream baza[3] ;
   wypozyczalnia Ten ;
   bool poprawnie=false ;
-  char ster ;
   while(true){ //początek pętli głównej
     gotoxy(0,0) ;
     WypiszMenu(poprawnie) ;
-    ster=getchar() ;
-    switch(ster) {
+    switch(getchar()) {
+        
     } ;
   } ; //koniec pętli głównej
   return 0 ;
