@@ -51,5 +51,21 @@ void WypiszMenu(bool czy){
     cout << "Baza danych nie jest wczytana" << endl ;
   } ;
   cout << "Opcje:" << endl ;
+  if (czy) {
+    cout << "Q - wczytaj bazę danych jeszcze raz" << endl ;
+    cout << "W - podaj nowy adres do bazy danych (zamknij obecną)" << endl ;
+    cout << "E - zamknij bazę danych" << endl ;
+    cout << "R - dodaj klienta" << endl ;
+    cout << "T - usuń klienta" << endl ;
+    cout << "Y - modyfikuj dane klienta" << endl ;
+    cout << "U - wypożycz przedmiot" << endl ;
+    cout << "I - zwróc przedmiot" << endl ;
+    cout << "O - sprawdź przedmioty" << endl ;
+    cout << "P - inwentarz" << endl ;
+    cout << "A - lista klientów" << endl ;
+  } else {
+  cout << "Q - spróbuj wczytać bazę danych jeszcze raz" << endl ;
+  cout << "W - podaj nowy adres do bazy danych" << endl ;
+  } ;
 } ;
 #endif
