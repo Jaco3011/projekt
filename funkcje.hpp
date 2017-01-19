@@ -38,10 +38,10 @@ void wczytywanie(fstream * dane, string * sciezka, string * dokad[]){
       cout << "Wczytano ścieżki dostępu" << endl ;
     } ;
   (*dane).clear() ;
-  (*dane).close() ;
   } else {
     cout << "Problemy z otwarciem ścieżek do plików" << endl ;
   } ;
+  (*dane).close() ;
 } ; //koniec wczytywania
 void WypiszMenu(bool czy){
   cout << "Menu główne bazy danych" << endl ;
@@ -52,8 +52,8 @@ void WypiszMenu(bool czy){
   } ;
   cout << "Opcje:" << endl ;
   if (czy) {
-    cout << "Q - wczytaj bazę danych jeszcze raz" << endl ;
-    cout << "W - podaj nowy adres do bazy danych (zamknij obecną)" << endl ;
+    cout << "Q - wczytaj bazę danych jeszcze raz (z obecnych ścieżek)" << endl ;
+    cout << "W - podaj nowy adres do bazy danych (i zamknij obecną)" << endl ;
     cout << "E - zamknij bazę danych" << endl ;
     cout << "R - dodaj klienta" << endl ;
     cout << "T - usuń klienta" << endl ;
@@ -64,7 +64,7 @@ void WypiszMenu(bool czy){
     cout << "P - inwentarz" << endl ;
     cout << "A - lista klientów" << endl ;
   } else {
-  cout << "Q - spróbuj wczytać bazę danych jeszcze raz" << endl ;
+  cout << "Q - spróbuj wczytać bazę danych jeszcze raz (z obecnych ścieżek)" << endl ;
   cout << "W - podaj nowy adres do bazy danych" << endl ;
   } ;
 } ;
