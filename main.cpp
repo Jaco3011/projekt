@@ -13,7 +13,10 @@ class klient {
   string imie;
   string nazwisko ;
   int wiek ;
-  public :
+  list <int> itemki ;
+  bool czysty() {
+    return itemki.empty() ;
+  } ;
 } ; //koniec class kilent
 class nasze {
   public:
@@ -21,6 +24,7 @@ class nasze {
   string nazwa ;
 } ;
 class wypozyczalnia {
+  public:
   list <klient> ludzie ;
   list <nasze> przedmioty ;
 } ;
@@ -33,11 +37,41 @@ int main () {
   wypozyczalnia Ten ;
   bool poprawnie=false ;
   while(true){ //początek pętli głównej
-    gotoxy(0,0) ;
+    system("cls") ;
     WypiszMenu(poprawnie) ;
     switch(getchar()) {
-        
+      case 'Q' :
+        for (int i=0; i<3 ; i++) {
+          baza[i].flush() ;
+          baza[i].close() ;
+        } ;
+        wczytajbaze(3, baza, sciezki) ;
+        if (wszystkodobrze(3, baza)){
+          poprawnie = true ;
+        } else {
+          poprawnie = false ;
+        } ;
+        break ; //koniec Q
+      case 'W' :
+        for (int i=0; i<3 ; i++) {
+          baza[i].flush() ;
+          baza[i].close() ;
+        } ;
+        dane.close() ;
+        sciezka=sciezkanowa() ;
+        wczytywanie(dane, sciezka, sciezki) ;
+        break ;
+      case 'E' :
+        for (int i=0; i<3 ; i++) {
+          baza[i].flush() ;
+          baza[i].close() ;
+        } ;
+        Ten=new wypozyczalnia() ;
+        cout << "Baza zamknięta" << endl ;
+        poprawnie=false ;
+        break ;
     } ;
+  system("pause") ;
   } ; //koniec pętli głównej
   return 0 ;
 } ;
