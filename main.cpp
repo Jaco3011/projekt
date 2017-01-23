@@ -27,6 +27,8 @@ class wypozyczalnia {
   public:
   list <klient> ludzie ;
   list <nasze> przedmioty ;
+  void Dodaj_Klienta(){
+  } ;
 } ;
 int main () {
   system("COLOR 02") ;
@@ -34,10 +36,12 @@ int main () {
   fstream dane ;
   string sciezki[3] ;
   fstream baza[3] ;
-  wypozyczalnia Ten ;
+  wypozyczalnia Ten=new wypożyczalnia() ;
   bool poprawnie=false ;
+  bool kont;
   while(true){ //początek pętli głównej
     system("cls") ;
+    kont=true;
     WypiszMenu(poprawnie) ;
     switch(getchar()) {
       case 'Q' :
@@ -48,6 +52,8 @@ int main () {
         wczytajbaze(3, baza, sciezki) ;
         if (wszystkodobrze(3, baza)){
           poprawnie = true ;
+          //procedura wczytywania
+          
         } else {
           poprawnie = false ;
         } ;
@@ -58,20 +64,37 @@ int main () {
           baza[i].close() ;
         } ;
         dane.close() ;
+        poprawnie=false ;
         sciezka=sciezkanowa() ;
-        wczytywanie(dane, sciezka, sciezki) ;
-        break ;
+        if ( wczytywanie(dane, sciezka, sciezki) ) {
+          
+        } ;
+        break ; //koniec W
       case 'E' :
         for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
           baza[i].close() ;
         } ;
-        Ten=new wypozyczalnia() ;
+        Ten=NULL ;
         cout << "Baza zamknięta" << endl ;
         poprawnie=false ;
         break ;
+      case 'R' :
+        if(poprawnie){
+          
+        } else{
+          kont=false ;
+        } ;
+        break;
+      case 'S':
+        
+        break ;
+      default:
+        kont=false ;
     } ;
+  if (kont) {
   system("pause") ;
+  } ;
   } ; //koniec pętli głównej
   return 0 ;
 } ;
