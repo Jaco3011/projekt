@@ -23,7 +23,8 @@ void wczytajbaze (int a, fstream * pliki[], string * sciezki[]){
         (*pliki[i]).open((*sciezki[i]).c_str(), ios::in|ios::out) ;
     };
 };
-void wczytywanie(fstream * dane, string * sciezka, string * dokad[]){
+bool wczytywanie(fstream * dane, string * sciezka, string * dokad[]){
+  bool wynik ;
   (*dane).open((*sciezka).c_str(), ios::in) ;
    if ((*dane).is_open()) {
     cout << "Wczytywanie ścieżek do plików" << endl ;
@@ -34,14 +35,18 @@ void wczytywanie(fstream * dane, string * sciezka, string * dokad[]){
     } ;
     if ((*dokad[2])=="" && (*dane).eof()) {
       cout << "Ścieżki nie zostały wczytanie" << endl ;
+      wynik=false ;
     } else {
       cout << "Wczytano ścieżki dostępu" << endl ;
+      wynik=true ;
     } ;
   (*dane).clear() ;
   } else {
     cout << "Problemy z otwarciem ścieżek do plików" << endl ;
+     wynik=false ;
   } ;
   (*dane).close() ;
+  return wynik ;
 } ; //koniec wczytywania
 void WypiszMenu(bool czy){
   cout << "Menu główne bazy danych" << endl ;
@@ -60,7 +65,7 @@ void WypiszMenu(bool czy){
     cout << "Y - modyfikuj dane klienta" << endl ;
     cout << "U - wypożycz przedmiot" << endl ;
     cout << "I - zwróc przedmiot" << endl ;
-    cout << "O - sprawdź przedmioty" << endl ;
+    cout << "O - sprawdź przedmiot" << endl ;
     cout << "P - inwentarz" << endl ;
     cout << "A - lista klientów" << endl ;
     cout << "S - zapisz bazę danych" << endl ;
