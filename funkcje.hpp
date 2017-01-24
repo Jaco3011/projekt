@@ -74,5 +74,4 @@ void WypiszMenu(bool czy){
   cout << "W - podaj nowy adres do bazy danych" << endl ;
   } ;
 } ;
-
 #endif
