@@ -44,5 +44,8 @@ class wypozyczalnia {
       return true ;
     } ;
   } ;
-} ;
+  void UsunKlienta(int a) {
+    this->ludzie.erase(a) ;
+  } ;
+} ; // koniec klasy wypożyczalnia
 #endif
