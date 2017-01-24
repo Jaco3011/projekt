@@ -69,6 +69,7 @@ void WypiszMenu(bool czy){
     cout << "P - inwentarz" << endl ;
     cout << "A - lista klientów" << endl ;
     cout << "S - zapisz bazę danych" << endl ;
+    cout << "D - sprawdź klienta" << endl ;
   } else {
   cout << "Q - spróbuj wczytać bazę danych jeszcze raz (z obecnych ścieżek)" << endl ;
   cout << "W - podaj nowy adres do bazy danych" << endl ;
