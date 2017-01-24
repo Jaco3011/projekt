@@ -2,40 +2,12 @@
 #include <string>
 #include <fstream>
 #include <list>
+#include <vector>
 #include <cstdlib>
 #include <conio.h>
 #include <stdio.h>
 #include "funkcje.hpp"
-using namespace std ;
-class klient {
-  public:
-  string imie;
-  string nazwisko;
-  int wiek ;
-  list <int> itemki ;
-  bool czysty() {
-    return this->itemki.empty() ;
-  } ;
-  void TenKlient(){
-    cout << "Imię: " << this->imie << endl ;
-    cout << "Nazwisko: "<< this->nazwisko << endl ;
-    cout << "wiek: " << this->wiek << endl ;
-  } ;
-} ; //koniec class kilent
-class nasze {
-  public:
-  int numer ;
-  string nazwa ;
-} ;
-class wypozyczalnia {
-  public:
-  vector <klient> ludzie ;
-  vector <nasze> przedmioty ;
-  list <int> zmiana[3] ;
-  void DodajKlienta(klient a){
-  przedmioty.push_back(a) ;
-  } ;
-} ;
+#inlcude "klasy.hpp"
 int main () {
   system("COLOR 02") ;
   string sciezka ;
@@ -116,11 +88,25 @@ int main () {
           kont=false ;
         } ;
         break;
-      case 'S':
-        
-        break ;
       case 'T':
-        
+        if(poprawnie){
+          int abcd ;
+          cout << "Podaj nr. klienta do usunięcia " << endl ;
+          cin >> abcd ;
+          if (
+        } else {
+          kont=false ;
+        } ;
+        break ;
+      case 'S':
+        if(poprawnie){
+          for (int i=0; i<3 ; i++) {
+          baza[i].flush() ;
+        } ;
+          cout << "Baza zapisana" << endl ;
+        } else {
+          kont=false ;
+        } ;
         break ;
       default:
         kont=false ;
