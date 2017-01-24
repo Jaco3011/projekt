@@ -93,11 +93,17 @@ int main () {
           int abcd ;
           cout << "Podaj nr. klienta do usunięcia " << endl ;
           cin >> abcd ;
-          if (
+          if (Ten.istnienieKlienta(abcd)){
+              (Ten.ludzie[abcd]).TenKlient() ;
+              cout << "Czy na pewno chcesz usunąć? Y/N " ;
+              
+          } else {
+            cout << "Podany klient nie istnieje! " << endl ;
+          } ;
         } else {
           kont=false ;
         } ;
-        break ;
+        break ; // koniec T
       case 'S':
         if(poprawnie){
           for (int i=0; i<3 ; i++) {
@@ -107,7 +113,16 @@ int main () {
         } else {
           kont=false ;
         } ;
-        break ;
+        break ; //koniec S   
+      case 'D':
+            int abcd ;
+            cout << "Podaj nr klienta: " ;
+            cin >> abcd ;
+            if(Ten.IstnienieKlienta(abcd)) {
+              
+            } else {
+              cout << "Klient o podanym numerze nie istnieje!" << endl ;
+            } ;
       default:
         kont=false ;
     } ;
