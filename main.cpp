@@ -9,13 +9,17 @@
 using namespace std ;
 class klient {
   public:
-  int numer ;
   string imie;
-  string nazwisko ;
+  string nazwisko;
   int wiek ;
   list <int> itemki ;
   bool czysty() {
-    return itemki.empty() ;
+    return this->itemki.empty() ;
+  } ;
+  void TenKlient(){
+    cout << "Imię: " << this->imie << endl ;
+    cout << "Nazwisko: "<< this->nazwisko << endl ;
+    cout << "wiek: " << this->wiek << endl ;
   } ;
 } ; //koniec class kilent
 class nasze {
@@ -25,9 +29,11 @@ class nasze {
 } ;
 class wypozyczalnia {
   public:
-  list <klient> ludzie ;
-  list <nasze> przedmioty ;
-  void Dodaj_Klienta(){
+  vector <klient> ludzie ;
+  vector <nasze> przedmioty ;
+  list <int> zmiana[3] ;
+  void DodajKlienta(klient a){
+  przedmioty.push_back(a) ;
   } ;
 } ;
 int main () {
@@ -36,7 +42,7 @@ int main () {
   fstream dane ;
   string sciezki[3] ;
   fstream baza[3] ;
-  wypozyczalnia Ten=new wypożyczalnia() ;
+  wypozyczalnia Ten=new wypozyczalnia() ;
   bool poprawnie=false ;
   bool kont;
   while(true){ //początek pętli głównej
@@ -53,7 +59,15 @@ int main () {
         if (wszystkodobrze(3, baza)){
           poprawnie = true ;
           //procedura wczytywania
-          
+          while(!baza[0].eof()){ //wczytywanie klientów
+            
+          } ; //koniec while
+          while(!baza[1].eof()){ //wczytywanie przedmiotów
+            
+          } ; //koniec while
+          while(!baza[2].eof()){ //wczytywanie przedmiotów
+            
+          } ; //koniec while
         } else {
           poprawnie = false ;
         } ;
@@ -81,12 +95,31 @@ int main () {
         break ;
       case 'R' :
         if(poprawnie){
-          
+          klient abc ;
+          cout << "Podaj imię klienta" << endl ;
+          cin >> abc.imie ;
+          cout >> "Podaj nazwisko klienta" << endl ;
+          cin >> abc.nazwisko ;
+          cout >> "Podaj wiek klienta" << endl ;
+          cin >> abc.wiek ;
+          cout << "Dane klienta: " << endl ;
+          abc.TenKlient() ;
+          cout << "Dodać do bazy? Y/N " ;
+          char y=getchar() ;
+          if(y=='Y' || y=='y'){
+            Ten.DodajKlienta(abc) ;
+            cout << "Klient został pomyślnie dodany do bazy danych" << endl ;
+          } else {
+            cout << "Klient nie został dodany do bazy danych" << endl ;
+          } ;
         } else{
           kont=false ;
         } ;
         break;
       case 'S':
+        
+        break ;
+      case 'T':
         
         break ;
       default:
