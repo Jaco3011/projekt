@@ -8,7 +8,17 @@
 #include <cstdlib>
 #include <conio.h>
 #include <stdio.h>
+#include <queue>
 using namespace std ;
+enum corobic{
+  dodaj,
+  usun,
+  zmien
+} ;
+class zmiana{
+corobic ab ;
+int cd ;
+} ;
 class klient {
   public:
   string imie;
@@ -33,7 +43,8 @@ class wypozyczalnia {
   public:
   vector <klient> ludzie ;
   vector <nasze> przedmioty ;
-  list <int> zmiana[3] ;
+  queue <zmiana> zmienianie;
+  static int punkt=(-1) ;
   void DodajKlienta(klient a){
   przedmioty.push_back(a) ;
   } ;
@@ -47,5 +58,15 @@ class wypozyczalnia {
   void UsunKlienta(int a) {
     this->ludzie.erase(a) ;
   } ;
+  void DodajKlienta(klient a) {
+    this->ludzie.push_back(a)
+  } ;
+  void Zmien(corobic ab, int cd){
+    zmiana yyy;
+    yyy.ab=ab ;
+    yyy.cd=cd ;
+    this->zmienianie.push(yyy) ;
+  } ;
+  //void wypozyczenie
 } ; // koniec klasy wypożyczalnia
 #endif
