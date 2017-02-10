@@ -25,14 +25,8 @@ class klient {
   string nazwisko;
   int wiek ;
   list <int> itemki ;
-  bool czysty() {
-    return this->itemki.empty() ;
-  } ;
-  void TenKlient(){
-    cout << "Imię: " << this->imie << endl ;
-    cout << "Nazwisko: "<< this->nazwisko << endl ;
-    cout << "wiek: " << this->wiek << endl ;
-  } ;
+  bool czysty()
+  void TenKlient()
 } ; //koniec class kilent
 class nasze {
   public:
@@ -45,28 +39,10 @@ class wypozyczalnia {
   vector <nasze> przedmioty ;
   queue <zmiana> zmienianie;
   static int punkt=(-1) ;
-  void DodajKlienta(klient a){
-  przedmioty.push_back(a) ;
-  } ;
-  bool IstnenieKlienta(int a) {
-    if (ludzie.a==NULL){
-      return false ;
-    } else {
-      return true ;
-    } ;
-  } ;
-  void UsunKlienta(int a) {
-    this->ludzie.erase(a) ;
-  } ;
-  void DodajKlienta(klient a) {
-    this->ludzie.push_back(a)
-  } ;
-  void Zmien(corobic ab, int cd){
-    zmiana yyy;
-    yyy.ab=ab ;
-    yyy.cd=cd ;
-    this->zmienianie.push(yyy) ;
-  } ;
-  //void wypozyczenie
+  void DodajKlienta(klient a)
+  bool IstnenieKlienta(int a)
+  void UsunKlienta(int a)
+  void DodajKlienta(klient a)
+  void Zmien(corobic ab, int cd)
 } ; // koniec klasy wypożyczalnia
 #endif
