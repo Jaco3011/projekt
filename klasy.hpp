@@ -39,10 +39,10 @@ class wypozyczalnia {
   vector <nasze> przedmioty ;
   queue <zmiana> zmienianie;
   static int punkt=(-1) ;
-  void DodajKlienta(klient a)
-  bool IstnenieKlienta(int a)
-  void UsunKlienta(int a)
-  void DodajKlienta(klient a)
-  void Zmien(corobic ab, int cd)
+  void DodajKlienta(klient a) ; 
+  bool IstnenieKlienta(int a) ;
+  void UsunKlienta(int a) ;
+  void DodajKlienta(klient a) ;
+  void Zmien(corobic ab, int cd) ;
 } ; // koniec klasy wypożyczalnia
 #endif
