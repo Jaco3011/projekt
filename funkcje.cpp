@@ -1,5 +1,3 @@
-#ifndef funkcje_cpp
-#define funkcje_cpp
 #inlcue "funkcje.hpp"
 #include <iostream>
 #include <string>
@@ -76,4 +74,3 @@ void WypiszMenu(bool czy){
   cout << "W - podaj nowy adres do bazy danych" << endl ;
   } ;
 } ;
-#endif
