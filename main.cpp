@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <conio.h>
 #include <stdio.h>
+#include <sstream>
 #include "funkcje.hpp"
 #inlcude "klasy.hpp"
 int main () {
@@ -17,6 +18,8 @@ int main () {
   wypozyczalnia Ten=new wypozyczalnia() ;
   bool poprawnie=false ;
   bool kont;
+  nasze * zaz_przedm=NULL ;
+  klient * zaz_kli=NULL ;
   while(true){ //początek pętli głównej
     system("cls") ;
     kont=true;
@@ -32,12 +35,14 @@ int main () {
           poprawnie = true ;
           //procedura wczytywania
           while(!baza[0].eof()){ //wczytywanie klientów
-            
+            string wejs ;
+            getline(baza, wejs) ;
+            //TODO
           } ; //koniec while
           while(!baza[1].eof()){ //wczytywanie przedmiotów
             
           } ; //koniec while
-          while(!baza[2].eof()){ //wczytywanie przedmiotów
+          while(!baza[2].eof()){ //wczytywanie listy wypożyczonych przedmiotów
             
           } ; //koniec while
         } else {
@@ -115,14 +120,23 @@ int main () {
         } ;
         break ; //koniec S   
       case 'D':
+        if (poprawnie) {
             int abcd ;
             cout << "Podaj nr klienta: " ;
             cin >> abcd ;
             if(Ten.IstnienieKlienta(abcd)) {
-              
+              (Ten.ludzie[abcd]).TenKilent() ;
+              if ((Ten.ludzie[abcd]).czysty()){
+                cout << "Kllient nic nie wypożyczyl" << endl ;
+              } else {
+                
+              } ;
             } else {
               cout << "Klient o podanym numerze nie istnieje!" << endl ;
             } ;
+        } else {
+          kont=false
+        } ;
       default:
         kont=false ;
     } ;
