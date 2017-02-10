@@ -25,6 +25,8 @@ class klient {
   string nazwisko;
   int wiek ;
   list <int> itemki ;
+  klient()
+  klient(string s)
   bool czysty()
   void TenKlient()
 } ; //koniec class kilent
