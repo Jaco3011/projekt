@@ -1,5 +1,6 @@
 #ifndef funkcje_cpp
 #define funkcje_cpp
+#inlcue "funkcje.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>
