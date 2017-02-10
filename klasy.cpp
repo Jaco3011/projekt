@@ -9,6 +9,13 @@
 #include <stdio.h>
 #include <queue>
 using namespace std ;
+klient::klient(){
+} ;
+klient::klient(string s)
+:wiek(0)
+{
+   //TODO
+} ;
 bool klient::czysty() {
     return this->itemki.empty() ;
 } ;
