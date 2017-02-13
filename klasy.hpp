@@ -11,9 +11,9 @@
 #include <queue>
 using namespace std ;
 enum corobic{
-  dodaj,
-  usun,
-  zmien
+  dodaj = 0 ,
+  usun = 1 ,
+  zmien = 2
 } ;
 class zmiana{
 corobic ab ;
