@@ -18,7 +18,13 @@ klient::klient(string s)
    stringstream ss(s) ;
    string k ;
    ss >> imie >> nazwisko >> k ;
+   try{
    wiek=stoi(k, nullptr, 10) ;
+   } ;
+   catch (invalid_argument e){
+   } ;
+   catch (out_of_range ee){
+   } ;
 } ;
 bool klient::czysty() {
     return this->itemki.empty() ;
@@ -33,7 +39,13 @@ nasze::nasze(){
 nasze::nasze(string s)
 :numer(0)
 {
+   try {
    numer=stoi(s,nullptr,10);
+   } ;
+   catch (invalid_argument e){
+   } ;
+   catch (out_of_range ee){
+   } ;
    while(s[0]!=36){
       s.erase(0) ;
    } ;
