@@ -30,8 +30,17 @@ void klient::TenKlient(){
 } ;
 nasze::nasze(){
 } ;
-nasze::nasze(string s){
-   
+nasze::nasze(string s)
+:numer(0)
+{
+   numer=stoi(s,nullptr,10);
+   while(s[0]!=36){
+      s.erase(0) ;
+   } ;
+    while(s[0]==36){
+      s.erase(0) ;
+   } ;
+   nazwa = s ;
 } ;
 void wypozyczalnia::DodajKlienta(klient a){
   przedmioty.push_back(a) ;
