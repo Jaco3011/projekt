@@ -76,3 +76,6 @@ void wypozyczalnia::Zmien(corobic ab, int cd){
     yyy.cd=cd ;
     this->zmienianie.push(yyy) ;
   } ;
+void wypozyczalnia::aktualizacja(fstream * baza){
+   
+} ;
