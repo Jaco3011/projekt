@@ -34,16 +34,24 @@ int main () {
         if (wszystkodobrze(3, baza)){
           poprawnie = true ;
           //procedura wczytywania
+          string wejs ;
           while(!baza[0].eof()){ //wczytywanie klientów
-            string wejs ;
-            getline(baza, wejs) ;
-            //TODO
+            getline(baza[0], wejs) ;
+            Ten.DodajKlienta(new klient(wejs)) ;
           } ; //koniec while
           while(!baza[1].eof()){ //wczytywanie przedmiotów
-            
+            getline(baza[1], wejs) ;
+            Ten.przedmioty.push_back(new nasze(wejs)) ;
           } ; //koniec while
+          int ii=0;
+          list <int> liczby ;
           while(!baza[2].eof()){ //wczytywanie listy wypożyczonych przedmiotów
-            
+            getline(baza[2], wejs) ;
+            DawajInty(liczby, wejs) ;
+            Ten.ludzie[ii].itemki==liczby
+            ii++ ;
+            if(ii>=Ten.ludzie.size())
+              break ;
           } ; //koniec while
         } else {
           poprawnie = false ;
@@ -62,6 +70,7 @@ int main () {
         } ;
         break ; //koniec W
       case 'E' :
+        
         for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
           baza[i].close() ;
@@ -127,8 +136,9 @@ int main () {
             if(Ten.IstnienieKlienta(abcd)) {
               (Ten.ludzie[abcd]).TenKilent() ;
               if ((Ten.ludzie[abcd]).czysty()){
-                cout << "Kllient nic nie wypożyczyl" << endl ;
+                cout << "Klient nic nie wypożyczyl" << endl ;
               } else {
+                cout << "Klinet wypożyczył " << Ten.ludzie[abcd].itemki.size() << " przedmiotów :" << endl ;
                 
               } ;
             } else {
