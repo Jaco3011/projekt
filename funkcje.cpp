@@ -85,7 +85,7 @@ void DawajInty (List * <int> liczby, string s){
   int nn ;
   bool m ;
   list<int>::iterator it ;
-  for (it=liczby.begin(); true; it++){
+  for (it=liczby.begin(); it!=liczby.end(); it++){
     m=true ;
     try{
       nn=stoi((*it), nullptr, 10) ;
@@ -99,8 +99,6 @@ void DawajInty (List * <int> liczby, string s){
    if(m) {
      liczby.push_back(nn) ;
    } ;
-    if (it=liczby.end())
-      break ;
   } ;
   liczby.unique() ;
 } ;
