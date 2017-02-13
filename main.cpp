@@ -109,8 +109,11 @@ int main () {
           cin >> abcd ;
           if (Ten.istnienieKlienta(abcd)){
               (Ten.ludzie[abcd]).TenKlient() ;
+            if((Ten.ludzie[abcd]).czysty()){
               cout << "Czy na pewno chcesz usunąć? Y/N " ;
-              
+            } else {
+              cout << "Klient ma wypożyczone przedmioty! " << endl ;
+            } ;
           } else {
             cout << "Podany klient nie istnieje! " << endl ;
           } ;
@@ -138,8 +141,11 @@ int main () {
               if ((Ten.ludzie[abcd]).czysty()){
                 cout << "Klient nic nie wypożyczyl" << endl ;
               } else {
-                cout << "Klinet wypożyczył " << Ten.ludzie[abcd].itemki.size() << " przedmiotów :" << endl ;
-                
+                cout << "Klient wypożyczył " << Ten.ludzie[abcd].itemki.size() << " przedmiotów :" << endl ;
+                list<int>::iterator it ;
+                 for (it=liczby.begin(); it!=liczby.end(); it++){
+                   
+                } ;
               } ;
             } else {
               cout << "Klient o podanym numerze nie istnieje!" << endl ;
