@@ -75,6 +75,7 @@ void WypiszMenu(bool czy){
   } ;
 } ;
 void DawajInty (List * <int> liczby, string s){
+  liczby.clear();
   stringstream ss(s) ;
   List <string> aa ;
   string a ;
