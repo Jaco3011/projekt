@@ -18,9 +18,7 @@ klient::klient(string s)
    stringstream ss(s) ;
    string k ;
    ss >> imie >> nazwisko >> k ;
-   try{
-      wiek=atoi(k) ;
-   } ;
+   wiek=stoi(k, nullptr, 10) ;
 } ;
 bool klient::czysty() {
     return this->itemki.empty() ;
@@ -29,6 +27,11 @@ void klient::TenKlient(){
     cout << "Imię: " << this->imie << endl ;
     cout << "Nazwisko: "<< this->nazwisko << endl ;
     cout << "wiek: " << this->wiek << endl ;
+} ;
+nasze::nasze(){
+} ;
+nasze::nasze(string s){
+   
 } ;
 void wypozyczalnia::DodajKlienta(klient a){
   przedmioty.push_back(a) ;
