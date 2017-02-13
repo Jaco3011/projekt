@@ -5,16 +5,22 @@
 #include <list>
 #include <vector>
 #include <cstdlib>
-#include <conio.h>
-#include <stdio.h>
+#include <conio>
+#include <stdio>
 #include <queue>
+#include <sstream>
 using namespace std ;
 klient::klient(){
 } ;
 klient::klient(string s)
 :wiek(0)
 {
-   //TODO
+   stringstream ss(s) ;
+   string k ;
+   ss >> imie >> nazwisko >> k ;
+   try{
+      wiek=atoi(k) ;
+   } ;
 } ;
 bool klient::czysty() {
     return this->itemki.empty() ;
