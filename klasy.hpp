@@ -42,11 +42,12 @@ class wypozyczalnia {
   vector <klient> ludzie ;
   vector <nasze> przedmioty ;
   queue <zmiana> zmienianie;
-  static int punkt=(-1) ;
+  static int punkt=(-1) ; //po co ja to dodawałem?
   void DodajKlienta(klient a) ; 
   bool IstnenieKlienta(int a) ;
   void UsunKlienta(int a) ;
   void DodajKlienta(klient a) ;
   void Zmien(corobic ab, int cd) ;
+  void aktualizacja(fstream * baza) ;
 } ; // koniec klasy wypożyczalnia
 #endif
