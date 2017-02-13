@@ -77,5 +77,14 @@ void wypozyczalnia::Zmien(corobic ab, int cd){
     this->zmienianie.push(yyy) ;
   } ;
 void wypozyczalnia::aktualizacja(fstream * baza){
-   
+   if(wszystkodobrze(3, *baza)){
+      while(!(this->zmienianie).empty()){
+         switch(*(this->zmienianie.front()).ab){
+            case 0:
+               
+         (this->zmienianie).pop()
+      } ;
+   } else {
+      cout << "problem z zapisem" << endl ;
+   } ;
 } ;
