@@ -74,3 +74,31 @@ void WypiszMenu(bool czy){
   cout << "W - podaj nowy adres do bazy danych" << endl ;
   } ;
 } ;
+void DawajInty (List * <int> liczby, string s){
+  stringstream ss(s) ;
+  List <string> aa ;
+  string a ;
+  while (ss >> a) {
+    ss >> a;
+    aa.push_back(a) ;
+  } ;
+  int nn ;
+  bool m ;
+  list<int>::iterator it ;
+  for (it=liczby.begin(); it!=lista.end(); it++){
+    m=true ;
+    try{
+      nn=stoi((*it), nullptr, 10) ;
+    } ;
+   catch (invalid_argument e){
+     m=false ;
+   } ;
+   catch (out_of_range ee){
+     m=false ;
+   } ;
+   if(m) {
+     liczby.push_back(nn) ;
+   } ;
+  } ;
+  liczby.unique() ;
+} ;
