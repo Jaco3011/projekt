@@ -34,6 +34,8 @@ class nasze {
   public:
   int numer ;
   string nazwa ;
+  nasze() ;
+  nasze(string s) ;
 } ;
 class wypozyczalnia {
   public:
