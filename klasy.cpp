@@ -58,7 +58,7 @@ void wypozyczalnia::DodajKlienta(klient a){
   przedmioty.push_back(a) ;
 } ;
 bool wypozyczalnia::IstnenieKlienta(int a) {
-    if (ludzie.a==NULL){
+    if (this->ludzie[a]==NULL){
       return false ;
     } else {
       return true ;
