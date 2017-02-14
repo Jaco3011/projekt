@@ -90,9 +90,27 @@ void wypozyczalnia::aktualizacja(fstream * baza){
                for (it=(this->ludzie[*(this->zmienianie.front().cd)].itemki.begin()); it!=(this->ludzie[*(this->zmienianie.front().cd)].itemki.end()); it++){
                   *baza[2] << *it << " " ;
                } ;
+               break ;
+            case 1:
+               
          (this->zmienianie).pop()
       } ;
    } else {
       cout << "problem z zapisem" << endl ;
    } ;
+} ;
+bool wypozyczalnia::przedmiotwypozyczony(int a){
+   if (Ten.przedmioty[a]==NULL){
+      return false ;
+   } else {
+      list<int>::iterator it ;
+      for(int i=0 ; i<(this->ludzie.size()) ; i++){
+         for(it=this->ludzie[i].itemki.begin() ; it!=this->ludzie[i].itemki.end(); it++){
+            if(*it==a){
+               return false ;
+            } ;
+         } ;
+      } ;
+   } ;
+   return true ;
 } ;
