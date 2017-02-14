@@ -81,7 +81,9 @@ void wypozyczalnia::aktualizacja(fstream * baza){
       while(!(this->zmienianie).empty()){
          switch(*(this->zmienianie.front()).ab){
             case 0:
-               
+               przesun(*(this->zmienianie.front()).cd, *baza[0]) ;
+               przesun(*(this->zmienianie.front()).cd, *baza[2]) ;
+             //  *baza[0] >> this
          (this->zmienianie).pop()
       } ;
    } else {
