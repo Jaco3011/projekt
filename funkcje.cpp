@@ -1,7 +1,9 @@
-#inlcue "funkcje.hpp"
+#include "funkcje.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <list>
+#include <sstream>
 using namespace std ;
 string sciezkanowa() {
   string a ;
@@ -74,10 +76,10 @@ void WypiszMenu(bool czy){
   cout << "W - podaj nowy adres do bazy danych" << endl ;
   } ;
 } ;
-void DawajInty (List * <int> liczby, string s){
-  liczby.clear();
+void DawajInty (list <int> * liczby, string s){
+  (*liczby).clear();
   stringstream ss(s) ;
-  List <string> aa ;
+  list <string> aa ;
   string a ;
   while (ss >> a) {
     ss >> a;
@@ -85,33 +87,32 @@ void DawajInty (List * <int> liczby, string s){
   } ;
   int nn ;
   bool m ;
-  list<int>::iterator it ;
-  for (it=liczby.begin(); it!=liczby.end(); it++){
+  list<string>::iterator it ;
+  for (it=aa.begin(); it!=aa.end(); it++){
     m=true ;
-    try{
+    try
+    {
       nn=stoi((*it), nullptr, 10) ;
-    } ;
-   catch (invalid_argument e){
-     m=false ;
-   } ;
-   catch (out_of_range ee){
-     m=false ;
-   } ;
+    }
+   catch (...)
+   {
+       m=false ;
+   }
    if(m) {
-     liczby.push_back(nn) ;
+     (*liczby).push_back(nn) ;
    } ;
   } ;
-  liczby.unique() ;
+  (*liczby).unique() ;
 } ;
 void przesun (int n, fstream * plik) {
-  plik.seekg(0) ;
-  plik.seekp(0) ;
+  (*plik).seekg(0) ;
+  (*plik).seekp(0) ;
   int a=0 ;
   while(a<n){
-    if (plik.get()=10){
+    if ((*plik).get()==10){
       a++ ;
     } ;
-    plik.seekg(1, plik.cur) ;
-    plik.seekp(1, plik.cur) ;
+    (*plik).seekg(1, (*plik).cur) ;
+    (*plik).seekp(1, (*plik).cur) ;
   } ;
 } ;

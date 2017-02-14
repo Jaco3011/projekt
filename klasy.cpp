@@ -1,12 +1,12 @@
 #define klasy_cpp
+#include "klasy.hpp"
+#include "funkcje.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <list>
 #include <vector>
 #include <cstdlib>
-#include <conio>
-#include <stdio>
 #include <queue>
 #include <sstream>
 using namespace std ;
@@ -20,84 +20,86 @@ klient::klient(string s)
    ss >> imie >> nazwisko >> k ;
    try{
    wiek=stoi(k, nullptr, 10) ;
-   } ;
-   catch (invalid_argument e){
-   } ;
-   catch (out_of_range ee){
-   } ;
+   }
+   catch (...){
+   }
 } ;
 bool klient::czysty() {
-    return this->itemki.empty() ;
+    return itemki.empty() ;
 } ;
 void klient::TenKlient(){
-    cout << "Imię: " << this->imie << endl ;
-    cout << "Nazwisko: "<< this->nazwisko << endl ;
-    cout << "wiek: " << this->wiek << endl ;
+    cout << "Imię: " << imie << endl ;
+    cout << "Nazwisko: "<< nazwisko << endl ;
+    cout << "wiek: " << wiek << endl ;
 } ;
 nasze::nasze(){
 } ;
 nasze::nasze(string s)
 :numer(0)
 {
+bool b=true ;
    try {
    numer=stoi(s,nullptr,10);
+   }
+   catch (...){
+       b=false ;
    } ;
-   catch (invalid_argument e){
-   } ;
-   catch (out_of_range ee){
-   } ;
-   while(s[0]!=32){
-      s.erase(0) ;
-   } ;
+   if(b){
+    while(s[0]!=32){
+        s.erase(0) ;
+    } ;
     while(s[0]==32){
-      s.erase(0) ;
+        s.erase(0) ;
+    } ;
    } ;
    nazwa = s ;
 } ;
 void wypozyczalnia::DodajKlienta(klient a){
-  przedmioty.push_back(a) ;
+  ludzie.push_back(a) ;
 } ;
 bool wypozyczalnia::IstnenieKlienta(int a) {
-    if (this->ludzie[a]==NULL){
+    if (ludzie.size()>=a){
       return false ;
     } else {
       return true ;
     } ;
 } ;
 void wypozyczalnia::UsunKlienta(int a) {
-    this->ludzie.erase(a) ;
-  } ;
-void wypozyczalnia::DodajKlienta(klient a) {
-    this->ludzie.push_back(a)
- } ;
+    ludzie.erase(ludzie.begin()+a) ;
+} ;
 void wypozyczalnia::Zmien(corobic ab, int cd){
     zmiana yyy;
     yyy.ab=ab ;
     yyy.cd=cd ;
     this->zmienianie.push(yyy) ;
   } ;
-void wypozyczalnia::aktualizacja(fstream * baza){
-   if(wszystkodobrze(3, *baza)){
-      while(!(this->zmienianie).empty()){
-         switch(*(this->zmienianie.front()).ab){
+void wypozyczalnia::aktualizacja(fstream baza[]){
+      while(!zmienianie.empty()){
+         switch((zmienianie.front()).ab){
             case 0:
-               przesun(*(this->zmienianie.front().cd), *baza[0]) ;
-               przesun(*(this->zmienianie.front().cd), *baza[2]) ;
-               *baza[0] << this->ludzie[*(this->zmienianie.front().cd)].imie << " " << this->ludzie[*(this->zmienianie.front().cd)].nazwisko << " " << this->ludzie[*(this->zmienianie.front().cd)].wiek << endl ;
-               *baza[2] << endl ;
-               (*baza[2]).seekg(-1,  (*baza[2]).cur)) ;
-               (*baza[2]).seekp(-1,  (*baza[2]).cur)) ;
-               for (it=(this->ludzie[*(this->zmienianie.front().cd)].itemki.begin()); it!=(this->ludzie[*(this->zmienianie.front().cd)].itemki.end()); it++){
-                  *baza[2] << *it << " " ;
+               przesun(zmienianie.front().cd, &baza[0]) ;
+               przesun(zmienianie.front().cd, &baza[2]) ;
+               baza[0] << this->ludzie[zmienianie.front().cd].imie << " " << this->ludzie[zmienianie.front().cd].nazwisko << " " << this->ludzie[zmienianie.front().cd].wiek << endl ;
+               baza[2] << endl ;
+               (baza[2]).seekg(-1, (baza[2]).cur) ;
+               (baza[2]).seekp(-1, (baza[2]).cur) ;
+               list<int>::iterator it ;
+               for (it=(ludzie[zmienianie.front().cd].itemki.begin()); it!=(ludzie[zmienianie.front().cd].itemki.end()); it++){
+                  baza[2] << *it << " " ;
                } ;
                break ;
             case 1:
-               
+                przesun(zmienianie.front().cd, &baza[0]) ;
+                przesun(zmienianie.front().cd, &baza[2]) ;
+                while(baza[0].get()!=10){
+
+                } ;
+
+                break ;
+            case 2:
+                break ;
          (this->zmienianie).pop()
       } ;
-   } else {
-      cout << "problem z zapisem" << endl ;
-   } ;
 } ;
 bool wypozyczalnia::przedmiotwypozyczony(int a){
    if (Ten.przedmioty[a]==NULL){

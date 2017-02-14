@@ -16,6 +16,7 @@ enum corobic{
   zmien = 2
 } ;
 class zmiana{
+public:
 corobic ab ;
 int cd ;
 zmiana() ;
@@ -27,11 +28,11 @@ class klient {
   string nazwisko;
   int wiek ;
   list <int> itemki ;
-  klient()
-  klient(string s)
+  klient() ;
+  klient(string s) ;
   ~klient() ;
-  bool czysty()
-  void TenKlient()
+  bool czysty() ;
+  void TenKlient() ;
 } ; //koniec class kilent
 class nasze {
   public:
@@ -46,15 +47,14 @@ class wypozyczalnia {
   vector <klient> ludzie ;
   vector <nasze> przedmioty ;
   queue <zmiana> zmienianie;
-  static int punkt=(-1) ; //po co ja to dodawałem?
+  //static int punkt=(-1) ; //po co ja to dodawałem?
   wypozyczalnia() ;
   ~wypozyczalnia() ;
-  void DodajKlienta(klient a) ; 
+  void DodajKlienta(klient a) ;
   bool IstnenieKlienta(int a) ;
   void UsunKlienta(int a) ;
-  void DodajKlienta(klient a) ;
   void Zmien(corobic ab, int cd) ;
-  void aktualizacja(fstream * baza) ;
+  void aktualizacja(fstream baza[]) ;
   bool przedmiotwypozyczony(int a) ;
 } ; // koniec klasy wypożyczalnia
 #endif
