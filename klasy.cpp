@@ -46,10 +46,10 @@ nasze::nasze(string s)
    } ;
    catch (out_of_range ee){
    } ;
-   while(s[0]!=36){
+   while(s[0]!=32){
       s.erase(0) ;
    } ;
-    while(s[0]==36){
+    while(s[0]==32){
       s.erase(0) ;
    } ;
    nazwa = s ;
