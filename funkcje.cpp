@@ -103,3 +103,15 @@ void DawajInty (List * <int> liczby, string s){
   } ;
   liczby.unique() ;
 } ;
+void przesun (int n, fstream * plik) {
+  plik.seekg(0) ;
+  plik.seekp(0) ;
+  int a=0 ;
+  while(a<n){
+    if (plik.get()=10){
+      a++ ;
+    } ;
+    plik.seekg(1, plik.cur) ;
+    plik.seekp(1, plik.cur) ;
+  } ;
+} ;
