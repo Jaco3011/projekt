@@ -55,5 +55,6 @@ class wypozyczalnia {
   void DodajKlienta(klient a) ;
   void Zmien(corobic ab, int cd) ;
   void aktualizacja(fstream * baza) ;
+  bool przedmiotwypozyczony(int a) ;
 } ; // koniec klasy wypożyczalnia
 #endif
