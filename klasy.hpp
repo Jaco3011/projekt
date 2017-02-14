@@ -18,6 +18,8 @@ enum corobic{
 class zmiana{
 corobic ab ;
 int cd ;
+zmiana() ;
+~zmiana() ;
 } ;
 class klient {
   public:
@@ -27,6 +29,7 @@ class klient {
   list <int> itemki ;
   klient()
   klient(string s)
+  ~klient() ;
   bool czysty()
   void TenKlient()
 } ; //koniec class kilent
@@ -36,6 +39,7 @@ class nasze {
   string nazwa ;
   nasze() ;
   nasze(string s) ;
+  ~nasze() ;
 } ;
 class wypozyczalnia {
   public:
@@ -43,6 +47,8 @@ class wypozyczalnia {
   vector <nasze> przedmioty ;
   queue <zmiana> zmienianie;
   static int punkt=(-1) ; //po co ja to dodawałem?
+  wypozyczalnia() ;
+  ~wypozyczalnia() ;
   void DodajKlienta(klient a) ; 
   bool IstnenieKlienta(int a) ;
   void UsunKlienta(int a) ;
