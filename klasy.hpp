@@ -18,7 +18,6 @@ enum corobic{
 class zmiana{
 corobic ab ;
 int cd ;
-bool ful ;
 zmiana() ;
 ~zmiana() ;
 } ;
