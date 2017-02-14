@@ -111,6 +111,7 @@ int main () {
               (Ten.ludzie[abcd]).TenKlient() ;
             if((Ten.ludzie[abcd]).czysty()){
               cout << "Czy na pewno chcesz usunąć? Y/N " ;
+              
             } else {
               cout << "Klient ma wypożyczone przedmioty! " << endl ;
             } ;
@@ -121,7 +122,39 @@ int main () {
           kont=false ;
         } ;
         break ; // koniec T
+      case 'Y':
+        cout << "Funkcja niedostępna w obecnej wersji" << endl ;
+        break ; //koniec Y
+      case 'U':
+        int uu,uuu ;
+        cout << "podaj nr klienta: " << endl ;
+        cin >> uu ;
+        if(Ten.IstnienieKlienta[uu]){
+          cout << "Podaj numer przedmiotu. Liczba ujemna oznacza wycofanie operacji" << endl ;
+          cin >> uuu ;
+          if (uuu>=0){
+            if(Ten.przedmioty[uuu]==NULL){
+              cout << "Przedmiot o podanym numerze nie istnieje!" endl ;
+            } else {
+              cout << "Przedmiot nr. " << Ten.przedmioty[uuu].numer << " nazwa: " << Ten.przedmioty[uuu].nazwa << endl ;
+              if(Ten.przedmiotwypozyczony(uuu)){
+                cout << "Czy chcesz wypożyczyć? Y/N " ;
+                char y=getchar() ;
+                if(y=='Y' || y=='y'){
+                 Ten.ludzie[uu].itemki.push_back[uuu] ;
+                 cout << "Wypożyczono" << endl ;
+               } else {
+                 cout << "nie wypożyczono" << endl ;
+               } ;
+              } else {
+               cout << "Ten przedmiot juest już wypożyczony" << endl ;
+            } ;
+          } ;
+        } else {
+          cout << "Podany klient nie istnieje! " << endl ;
+        } ;
       case 'S':
+        Ten.aktualizacja() ;
         if(poprawnie){
           for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
@@ -144,8 +177,8 @@ int main () {
                 cout << "Klient wypożyczył " << Ten.ludzie[abcd].itemki.size() << " przedmiotów :" << endl ;
                 list<int>::iterator it ;
                  for (it=liczby.begin(); it!=liczby.end(); it++){
-                   
-                } ;
+                   cout << "Przedmiot nr wewn" << Ten.przedmioty[*it].numer << " nazwa: " << Ten.przedmioty[*it].nazwa << endl ;
+                 } ;
               } ;
             } else {
               cout << "Klient o podanym numerze nie istnieje!" << endl ;
