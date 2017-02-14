@@ -57,7 +57,7 @@ int main () {
           poprawnie = false ;
         } ;
         break ; //koniec Q
-      case 'W' :
+      case 'w' :
         for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
           baza[i].close() ;
@@ -69,7 +69,7 @@ int main () {
           
         } ;
         break ; //koniec W
-      case 'E' :
+      case 'e' :
         
         for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
@@ -79,7 +79,7 @@ int main () {
         cout << "Baza zamknięta" << endl ;
         poprawnie=false ;
         break ;
-      case 'R' :
+      case 'r' :
         if(poprawnie){
           klient abc ;
           cout << "Podaj imię klienta" << endl ;
@@ -102,7 +102,7 @@ int main () {
           kont=false ;
         } ;
         break;
-      case 'T':
+      case 't':
         if(poprawnie){
           int abcd ;
           cout << "Podaj nr. klienta do usunięcia " << endl ;
@@ -122,10 +122,10 @@ int main () {
           kont=false ;
         } ;
         break ; // koniec T
-      case 'Y':
+      case 'y':
         cout << "Funkcja niedostępna w obecnej wersji" << endl ;
         break ; //koniec Y
-      case 'U':
+      case 'u':
         int uu,uuu ;
         cout << "podaj nr klienta: " << endl ;
         cin >> uu ;
@@ -153,7 +153,22 @@ int main () {
         } else {
           cout << "Podany klient nie istnieje! " << endl ;
         } ;
-      case 'S':
+        break ;
+      case 'i':
+          int ii ;
+          cout << "Podaj numer zwracanego przedmiotu. Liczba ujemna oznacza wycofanie operacji" << endl ;
+          cin >> ii ;
+          if(Ten.przedmiotwypozyczony(ii)){
+            for(int i=0; i<Ten.ludzie.size(); i++){
+              if(Ten.ludzie[i]!=NULL){
+                Ten.ludzie[i].itemki.remove(ii) ;
+              } ;
+            } ;
+          } else {
+            cout << "Podany przedmiot nie istnieje!" << endl ;
+          } ;
+          break ;
+      case 's':
         Ten.aktualizacja() ;
         if(poprawnie){
           for (int i=0; i<3 ; i++) {
@@ -164,7 +179,7 @@ int main () {
           kont=false ;
         } ;
         break ; //koniec S   
-      case 'D':
+      case 'd':
         if (poprawnie) {
             int abcd ;
             cout << "Podaj nr klienta: " ;
