@@ -81,9 +81,15 @@ void wypozyczalnia::aktualizacja(fstream * baza){
       while(!(this->zmienianie).empty()){
          switch(*(this->zmienianie.front()).ab){
             case 0:
-               przesun(*(this->zmienianie.front()).cd, *baza[0]) ;
-               przesun(*(this->zmienianie.front()).cd, *baza[2]) ;
-             //  *baza[0] >> this
+               przesun(*(this->zmienianie.front().cd), *baza[0]) ;
+               przesun(*(this->zmienianie.front().cd), *baza[2]) ;
+               *baza[0] << this->ludzie[*(this->zmienianie.front().cd)].imie << " " << this->ludzie[*(this->zmienianie.front().cd)].nazwisko << " " << this->ludzie[*(this->zmienianie.front().cd)].wiek << endl ;
+               *baza[2] << endl ;
+               (*baza[2]).seekg(-1,  (*baza[2]).cur)) ;
+               (*baza[2]).seekp(-1,  (*baza[2]).cur)) ;
+               for (it=(this->ludzie[*(this->zmienianie.front().cd)].itemki.begin()); it!=(this->ludzie[*(this->zmienianie.front().cd)].itemki.end()); it++){
+                  *baza[2] << *it << " " ;
+               } ;
          (this->zmienianie).pop()
       } ;
    } else {
