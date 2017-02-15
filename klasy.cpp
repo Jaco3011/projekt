@@ -10,6 +10,18 @@
 #include <queue>
 #include <sstream>
 using namespace std ;
+void zmiana::przesuniecie(corobic n) {
+    switch (n) {
+    case 0:
+        cd++ ;
+        break ;
+    case 1:
+        cd-- ;
+        break ;
+    default:
+        //pusto
+    } ;
+} ;
 klient::klient(){
 } ;
 klient::klient(string s)
@@ -71,12 +83,13 @@ void wypozyczalnia::Zmien(corobic ab, int cd){
     zmiana yyy;
     yyy.ab=ab ;
     yyy.cd=cd ;
-    this->zmienianie.push(yyy) ;
+    zmienianie.push(yyy) ;
   } ;
 void wypozyczalnia::aktualizacja(fstream baza[]){
       while(!zmienianie.empty()){
          switch((zmienianie.front()).ab){
-            case 0:
+            case 0 :
+                {
                przesun(zmienianie.front().cd, &baza[0]) ;
                przesun(zmienianie.front().cd, &baza[2]) ;
                baza[0] << this->ludzie[zmienianie.front().cd].imie << " " << this->ludzie[zmienianie.front().cd].nazwisko << " " << this->ludzie[zmienianie.front().cd].wiek << endl ;
@@ -87,8 +100,12 @@ void wypozyczalnia::aktualizacja(fstream baza[]){
                for (it=(ludzie[zmienianie.front().cd].itemki.begin()); it!=(ludzie[zmienianie.front().cd].itemki.end()); it++){
                   baza[2] << *it << " " ;
                } ;
+
+               } ;
                break ;
-            case 1:
+                } ;
+            case 1 :
+                {
                 przesun(zmienianie.front().cd, &baza[0]) ;
                 przesun(zmienianie.front().cd, &baza[2]) ;
                 while(baza[0].get()!=10){
@@ -96,13 +113,21 @@ void wypozyczalnia::aktualizacja(fstream baza[]){
                 } ;
 
                 break ;
-            case 2:
+                }
+            case 2 :
                 break ;
-         (this->zmienianie).pop()
-      } ;
-} ;
-bool wypozyczalnia::przedmiotwypozyczony(int a){
-   if (Ten.przedmioty[a]==NULL){
+      } ; // koniec switcha
+      list<zmiana>::iterator ii ;
+            for(ii=zmienianie.begin(); ii!=zmienianie.end(); ii++){
+                    if((*ii).cd>zmienianie.front().cd){
+                        (*ii).przesuniecie(zmienianie.front().ab) ;
+                    };
+            } ;
+         (this->zmienianie).pop() ;
+    } ; //koniec while
+};
+bool wypozyczalnia::przedmiotwypozyczony (int a)
+{   if (przedmioty.size()<a){
       return false ;
    } else {
       list<int>::iterator it ;

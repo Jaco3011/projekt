@@ -11,17 +11,17 @@ string sciezkanowa() {
   cin >> a ;
   return a ;
 } ;
-bool wszystkodobrze(int a, fstream * dane[]){
+bool wszystkodobrze(int a, fstream dane[]){
     for(int i=0; i<a; i++){
-        if(!(*dane[i]).good()){
+        if(!(dane[i]).good()){
           return false ;
         };
     };
     return true ;
 };
-void wczytajbaze (int a, fstream * pliki[], string * sciezki[]){
+void wczytajbaze (int a, fstream pliki[], string sciezki[]){
     for(int i=0; i<a; i++){
-        (*pliki[i]).open((*sciezki[i]).c_str(), ios::in|ios::out) ;
+        (pliki[i]).open((sciezki[i]).c_str(), ios::in|ios::out) ;
     };
 };
 bool wczytywanie(fstream * dane, string * sciezka, string * dokad[]){

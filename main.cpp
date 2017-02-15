@@ -8,14 +8,14 @@
 #include <stdio.h>
 #include <sstream>
 #include "funkcje.hpp"
-#inlcude "klasy.hpp"
+#include "klasy.hpp"
 int main () {
   system("COLOR 02") ;
   string sciezka ;
   fstream dane ;
   string sciezki[3] ;
   fstream baza[3] ;
-  wypozyczalnia Ten=new wypozyczalnia() ;
+  wypozyczalnia Ten ;
   bool poprawnie=false ;
   bool kont;
   nasze * zaz_przedm=NULL ;
@@ -37,18 +37,18 @@ int main () {
           string wejs ;
           while(!baza[0].eof()){ //wczytywanie klientów
             getline(baza[0], wejs) ;
-            Ten.DodajKlienta(new klient(wejs)) ;
+            Ten.DodajKlienta(klient(wejs)) ;
           } ; //koniec while
           while(!baza[1].eof()){ //wczytywanie przedmiotów
             getline(baza[1], wejs) ;
-            Ten.przedmioty.push_back(new nasze(wejs)) ;
+            Ten.przedmioty.push_back(nasze(wejs)) ;
           } ; //koniec while
           int ii=0;
           list <int> liczby ;
           while(!baza[2].eof()){ //wczytywanie listy wypożyczonych przedmiotów
             getline(baza[2], wejs) ;
-            DawajInty(liczby, wejs) ;
-            Ten.ludzie[ii].itemki==liczby
+            DawajInty(&liczby, wejs) ;
+            Ten.ludzie[ii].itemki==liczby ;
             ii++ ;
             if(ii>=Ten.ludzie.size())
               break ;
@@ -58,24 +58,29 @@ int main () {
         } ;
         break ; //koniec Q
       case 'w' :
+        Ten.aktualizacja() ;
         for (int i=0; i<3 ; i++) {
+                try{
           baza[i].flush() ;
           baza[i].close() ;
+                }
+                catch(...){
+                } ;
         } ;
         dane.close() ;
         poprawnie=false ;
         sciezka=sciezkanowa() ;
-        if ( wczytywanie(dane, sciezka, sciezki) ) {
-          
+        if ( wczytywanie(&dane, &sciezka, &&sciezki) ) {
+            cout << "Wczytano nowe ścieżki, teraz możesz wczytać bazę danych" << endl ;
         } ;
         break ; //koniec W
       case 'e' :
-        
+
         for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
           baza[i].close() ;
         } ;
-        Ten=NULL ;
+        Ten=(*nullptr_t) ;
         cout << "Baza zamknięta" << endl ;
         poprawnie=false ;
         break ;
@@ -84,7 +89,7 @@ int main () {
           klient abc ;
           cout << "Podaj imię klienta" << endl ;
           cin >> abc.imie ;
-          cout >> "Podaj nazwisko klienta" << endl ;
+          cout <<"Podaj nazwisko klienta" << endl ;
           cin >> abc.nazwisko ;
           cout >> "Podaj wiek klienta" << endl ;
           cin >> abc.wiek ;
@@ -111,7 +116,7 @@ int main () {
               (Ten.ludzie[abcd]).TenKlient() ;
             if((Ten.ludzie[abcd]).czysty()){
               cout << "Czy na pewno chcesz usunąć? Y/N " ;
-              
+
             } else {
               cout << "Klient ma wypożyczone przedmioty! " << endl ;
             } ;
@@ -178,7 +183,7 @@ int main () {
         } else {
           kont=false ;
         } ;
-        break ; //koniec S   
+        break ; //koniec S
       case 'd':
         if (poprawnie) {
             int abcd ;

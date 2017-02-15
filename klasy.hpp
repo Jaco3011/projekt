@@ -21,6 +21,7 @@ corobic ab ;
 int cd ;
 zmiana() ;
 ~zmiana() ;
+void przesuniecie(corobic n) ;
 } ;
 class klient {
   public:
