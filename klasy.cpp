@@ -19,7 +19,9 @@ void zmiana::przesuniecie(corobic n) {
         cd-- ;
         break ;
     default:
-        //pusto
+        {
+                   //pusto
+        }
     } ;
 } ;
 klient::klient(){
@@ -69,7 +71,7 @@ bool b=true ;
 void wypozyczalnia::DodajKlienta(klient a){
   ludzie.push_back(a) ;
 } ;
-bool wypozyczalnia::IstnenieKlienta(int a) {
+bool wypozyczalnia::IstnienieKlienta(int a) {
     if (ludzie.size()>=a){
       return false ;
     } else {
@@ -83,15 +85,15 @@ void wypozyczalnia::Zmien(corobic ab, int cd){
     zmiana yyy;
     yyy.ab=ab ;
     yyy.cd=cd ;
-    zmienianie.push(yyy) ;
+    zmienianie.push_back(yyy) ;
   } ;
 void wypozyczalnia::aktualizacja(fstream baza[]){
       while(!zmienianie.empty()){
+            przesun(zmienianie.front().cd, &baza[0]) ;
+            przesun(zmienianie.front().cd, &baza[2]) ;
          switch((zmienianie.front()).ab){
             case 0 :
                 {
-               przesun(zmienianie.front().cd, &baza[0]) ;
-               przesun(zmienianie.front().cd, &baza[2]) ;
                baza[0] << this->ludzie[zmienianie.front().cd].imie << " " << this->ludzie[zmienianie.front().cd].nazwisko << " " << this->ludzie[zmienianie.front().cd].wiek << endl ;
                baza[2] << endl ;
                (baza[2]).seekg(-1, (baza[2]).cur) ;
@@ -100,21 +102,58 @@ void wypozyczalnia::aktualizacja(fstream baza[]){
                for (it=(ludzie[zmienianie.front().cd].itemki.begin()); it!=(ludzie[zmienianie.front().cd].itemki.end()); it++){
                   baza[2] << *it << " " ;
                } ;
-
+                break ;
                } ;
-               break ;
-                } ;
             case 1 :
                 {
-                przesun(zmienianie.front().cd, &baza[0]) ;
-                przesun(zmienianie.front().cd, &baza[2]) ;
+                int costam=0 ;
                 while(baza[0].get()!=10){
-
+                        baza[0].seekg(1, baza[0].cur) ;
+                        baza[0].seekp(1, baza[0].cur) ;
+                        costam++ ;
                 } ;
-
+                for(int i=0 ; i<=costam ; i++){
+                    baza[0] <<'' ;
+                } ;
+                costam=0 ;
+                while(baza[2].get()!=10){
+                        baza[2].seekg(1, baza[2].cur) ;
+                        baza[2].seekp(1, baza[2].cur) ;
+                        costam++ ;
+                } ;
+                for(int i=0 ; i<=costam ; i++){
+                    baza[2] << '' ;
+                } ;
                 break ;
                 }
             case 2 :
+                {
+                int costam=0 ;
+                while(baza[0].get()!=10){
+                        baza[0].seekg(1, baza[0].cur) ;
+                        baza[0].seekp(1, baza[0].cur) ;
+                        costam++ ;
+                } ;
+                for(int i=0 ; i<costam ; i++){
+                    baza[0] << '' ;
+                } ;
+                costam=0 ;
+                while(baza[2].get()!=10){
+                        baza[2].seekg(1, baza[2].cur) ;
+                        baza[2].seekp(1, baza[2].cur) ;
+                        costam++ ;
+                } ;
+                for(int i=0 ; i<costam ; i++){
+                    baza[2] << '' ;
+                } ;
+                baza[0] << this->ludzie[zmienianie.front().cd].imie << " " << this->ludzie[zmienianie.front().cd].nazwisko << " " << this->ludzie[zmienianie.front().cd].wiek ;
+                list<int>::iterator it ;
+               for (it=(ludzie[zmienianie.front().cd].itemki.begin()); it!=(ludzie[zmienianie.front().cd].itemki.end()); it++){
+                  baza[2] << *it << " " ;
+               } ;
+                break ;
+                } ;
+            default:
                 break ;
       } ; // koniec switcha
       list<zmiana>::iterator ii ;
@@ -123,7 +162,7 @@ void wypozyczalnia::aktualizacja(fstream baza[]){
                         (*ii).przesuniecie(zmienianie.front().ab) ;
                     };
             } ;
-         (this->zmienianie).pop() ;
+         (this->zmienianie).pop_front() ;
     } ; //koniec while
 };
 bool wypozyczalnia::przedmiotwypozyczony (int a)
@@ -140,4 +179,9 @@ bool wypozyczalnia::przedmiotwypozyczony (int a)
       } ;
    } ;
    return true ;
+} ;
+void wypozyczalnia::wyczysc(){
+    ludzie.clear() ;
+    przedmioty.clear() ;
+    zmienianie.clear() ;
 } ;

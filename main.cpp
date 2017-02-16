@@ -58,7 +58,7 @@ int main () {
         } ;
         break ; //koniec Q
       case 'w' :
-        Ten.aktualizacja() ;
+        Ten.aktualizacja(baza) ;
         for (int i=0; i<3 ; i++) {
                 try{
           baza[i].flush() ;
@@ -70,7 +70,7 @@ int main () {
         dane.close() ;
         poprawnie=false ;
         sciezka=sciezkanowa() ;
-        if ( wczytywanie(&dane, &sciezka, &&sciezki) ) {
+        if ( wczytywanie(&dane, &sciezka, &sciezki) ) {
             cout << "Wczytano nowe ścieżki, teraz możesz wczytać bazę danych" << endl ;
         } ;
         break ; //koniec W
@@ -80,7 +80,7 @@ int main () {
           baza[i].flush() ;
           baza[i].close() ;
         } ;
-        Ten=(*nullptr_t) ;
+        Ten.wyczysc() ;
         cout << "Baza zamknięta" << endl ;
         poprawnie=false ;
         break ;
@@ -91,7 +91,7 @@ int main () {
           cin >> abc.imie ;
           cout <<"Podaj nazwisko klienta" << endl ;
           cin >> abc.nazwisko ;
-          cout >> "Podaj wiek klienta" << endl ;
+          cout << "Podaj wiek klienta" << endl ;
           cin >> abc.wiek ;
           cout << "Dane klienta: " << endl ;
           abc.TenKlient() ;
@@ -112,7 +112,7 @@ int main () {
           int abcd ;
           cout << "Podaj nr. klienta do usunięcia " << endl ;
           cin >> abcd ;
-          if (Ten.istnienieKlienta(abcd)){
+          if (Ten.IstnienieKlienta(abcd)){
               (Ten.ludzie[abcd]).TenKlient() ;
             if((Ten.ludzie[abcd]).czysty()){
               cout << "Czy na pewno chcesz usunąć? Y/N " ;
@@ -134,19 +134,19 @@ int main () {
         int uu,uuu ;
         cout << "podaj nr klienta: " << endl ;
         cin >> uu ;
-        if(Ten.IstnienieKlienta[uu]){
+        if(Ten.IstnienieKlienta(uu)){
           cout << "Podaj numer przedmiotu. Liczba ujemna oznacza wycofanie operacji" << endl ;
           cin >> uuu ;
           if (uuu>=0){
-            if(Ten.przedmioty[uuu]==NULL){
-              cout << "Przedmiot o podanym numerze nie istnieje!" endl ;
+            if(Ten.przedmioty(uuu)==NULL){
+              cout << "Przedmiot o podanym numerze nie istnieje!" << endl ;
             } else {
               cout << "Przedmiot nr. " << Ten.przedmioty[uuu].numer << " nazwa: " << Ten.przedmioty[uuu].nazwa << endl ;
               if(Ten.przedmiotwypozyczony(uuu)){
                 cout << "Czy chcesz wypożyczyć? Y/N " ;
                 char y=getchar() ;
                 if(y=='Y' || y=='y'){
-                 Ten.ludzie[uu].itemki.push_back[uuu] ;
+                 Ten.ludzie[uu].itemki.push_back(uuu) ;
                  cout << "Wypożyczono" << endl ;
                } else {
                  cout << "nie wypożyczono" << endl ;
@@ -159,6 +159,7 @@ int main () {
           cout << "Podany klient nie istnieje! " << endl ;
         } ;
         break ;
+        } ;
       case 'i':
           int ii ;
           cout << "Podaj numer zwracanego przedmiotu. Liczba ujemna oznacza wycofanie operacji" << endl ;
@@ -196,15 +197,15 @@ int main () {
               } else {
                 cout << "Klient wypożyczył " << Ten.ludzie[abcd].itemki.size() << " przedmiotów :" << endl ;
                 list<int>::iterator it ;
-                 for (it=liczby.begin(); it!=liczby.end(); it++){
-                   cout << "Przedmiot nr wewn" << Ten.przedmioty[*it].numer << " nazwa: " << Ten.przedmioty[*it].nazwa << endl ;
+                 for (it=(Ten.ludzie[abcd]).begin(); it!=(Ten.ludzie[abcd]).end(); it++){
+                   cout << "Przedmiot nr na liście" << *it << "nr wewn" << Ten.przedmioty[*it].numer << " nazwa: " << Ten.przedmioty[*it].nazwa << endl ;
                  } ;
               } ;
             } else {
               cout << "Klient o podanym numerze nie istnieje!" << endl ;
             } ;
         } else {
-          kont=false
+          kont=false ;
         } ;
       default:
         kont=false ;
@@ -212,6 +213,7 @@ int main () {
   if (kont) {
   system("pause") ;
   } ;
-  } ; //koniec pętli głównej
+  } ; //koniec switcha
+  } ; //koniec pętli łównej
   return 0 ;
 } ;

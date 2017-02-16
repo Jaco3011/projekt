@@ -47,15 +47,16 @@ class wypozyczalnia {
   public:
   vector <klient> ludzie ;
   vector <nasze> przedmioty ;
-  queue <zmiana> zmienianie;
+  list <zmiana> zmienianie;
   //static int punkt=(-1) ; //po co ja to dodawałem?
   wypozyczalnia() ;
   ~wypozyczalnia() ;
   void DodajKlienta(klient a) ;
-  bool IstnenieKlienta(int a) ;
+  bool IstnienieKlienta(int a) ;
   void UsunKlienta(int a) ;
   void Zmien(corobic ab, int cd) ;
   void aktualizacja(fstream baza[]) ;
   bool przedmiotwypozyczony(int a) ;
+  void wyczysc() ;
 } ; // koniec klasy wypożyczalnia
 #endif
