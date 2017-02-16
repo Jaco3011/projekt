@@ -18,9 +18,10 @@ enum corobic{
 class zmiana{
 public:
 corobic ab ;
-int cd ;
 zmiana() ;
+zmiana(corobic a, int b) ;
 ~zmiana() ;
+int cd ;
 void przesuniecie(corobic n) ;
 } ;
 class klient {

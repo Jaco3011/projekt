@@ -70,7 +70,7 @@ int main () {
         dane.close() ;
         poprawnie=false ;
         sciezka=sciezkanowa() ;
-        if ( wczytywanie(&dane, &sciezka, &sciezki) ) {
+        if ( wczytywanie(&dane, &sciezka, sciezki) ) {
             cout << "Wczytano nowe ścieżki, teraz możesz wczytać bazę danych" << endl ;
         } ;
         break ; //koniec W
@@ -138,7 +138,7 @@ int main () {
           cout << "Podaj numer przedmiotu. Liczba ujemna oznacza wycofanie operacji" << endl ;
           cin >> uuu ;
           if (uuu>=0){
-            if(Ten.przedmioty(uuu)==NULL){
+            if(Ten.przedmioty.size()>=uuu){
               cout << "Przedmiot o podanym numerze nie istnieje!" << endl ;
             } else {
               cout << "Przedmiot nr. " << Ten.przedmioty[uuu].numer << " nazwa: " << Ten.przedmioty[uuu].nazwa << endl ;
@@ -166,16 +166,17 @@ int main () {
           cin >> ii ;
           if(Ten.przedmiotwypozyczony(ii)){
             for(int i=0; i<Ten.ludzie.size(); i++){
-              if(Ten.ludzie[i]!=NULL){
-                Ten.ludzie[i].itemki.remove(ii) ;
+              if(Ten.ludzie.size()<=i){
+                break ;
               } ;
+              Ten.ludzie[i].itemki.remove(ii) ;
             } ;
           } else {
             cout << "Podany przedmiot nie istnieje!" << endl ;
           } ;
           break ;
       case 's':
-        Ten.aktualizacja() ;
+        Ten.aktualizacja(baza) ;
         if(poprawnie){
           for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
@@ -191,13 +192,13 @@ int main () {
             cout << "Podaj nr klienta: " ;
             cin >> abcd ;
             if(Ten.IstnienieKlienta(abcd)) {
-              (Ten.ludzie[abcd]).TenKilent() ;
+              (Ten.ludzie[abcd]).TenKlient() ;
               if ((Ten.ludzie[abcd]).czysty()){
                 cout << "Klient nic nie wypożyczyl" << endl ;
               } else {
                 cout << "Klient wypożyczył " << Ten.ludzie[abcd].itemki.size() << " przedmiotów :" << endl ;
                 list<int>::iterator it ;
-                 for (it=(Ten.ludzie[abcd]).begin(); it!=(Ten.ludzie[abcd]).end(); it++){
+                 for (it=(Ten.ludzie[abcd]).itemki.begin(); it!=(Ten.ludzie[abcd]).itemki.end(); it++){
                    cout << "Przedmiot nr na liście" << *it << "nr wewn" << Ten.przedmioty[*it].numer << " nazwa: " << Ten.przedmioty[*it].nazwa << endl ;
                  } ;
               } ;
@@ -209,11 +210,11 @@ int main () {
         } ;
       default:
         kont=false ;
-    } ;
+    } ; //koniec switcha
   if (kont) {
   system("pause") ;
   } ;
-  } ; //koniec switcha
-  } ; //koniec pętli łównej
-  return 0 ;
+    return 0 ;
+  } ; //koniec pętli głównej
 } ;
+

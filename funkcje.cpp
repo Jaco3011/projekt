@@ -24,17 +24,17 @@ void wczytajbaze (int a, fstream pliki[], string sciezki[]){
         (pliki[i]).open((sciezki[i]).c_str(), ios::in|ios::out) ;
     };
 };
-bool wczytywanie(fstream * dane, string * sciezka, string * dokad[]){
+bool wczytywanie(fstream * dane, string * sciezka, string dokad[]){
   bool wynik ;
   (*dane).open((*sciezka).c_str(), ios::in) ;
    if ((*dane).is_open()) {
     cout << "Wczytywanie ścieżek do plików" << endl ;
     int i=0 ;
     while (i<3 && !(*dane).eof()) {
-      getline((*dane), (*dokad[i])) ;
+      getline((*dane), (dokad[i])) ;
       i++ ;
     } ;
-    if ((*dokad[2])=="" && (*dane).eof()) {
+    if ((dokad[2])=="" && (*dane).eof()) {
       cout << "Ścieżki nie zostały wczytanie" << endl ;
       wynik=false ;
     } else {

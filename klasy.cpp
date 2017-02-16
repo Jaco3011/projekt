@@ -10,6 +10,14 @@
 #include <queue>
 #include <sstream>
 using namespace std ;
+zmiana::zmiana() {
+} ;
+zmiana::zmiana(corobic a, int b){
+    ab=a ;
+    cd=b ;
+};
+zmiana::~zmiana(){
+} ;
 void zmiana::przesuniecie(corobic n) {
     switch (n) {
     case 0:
@@ -37,6 +45,8 @@ klient::klient(string s)
    }
    catch (...){
    }
+} ;
+klient::~klient(){
 } ;
 bool klient::czysty() {
     return itemki.empty() ;
@@ -68,6 +78,12 @@ bool b=true ;
    } ;
    nazwa = s ;
 } ;
+nasze::~nasze(){
+};
+wypozyczalnia::wypozyczalnia(){
+};
+wypozyczalnia::~wypozyczalnia(){
+};
 void wypozyczalnia::DodajKlienta(klient a){
   ludzie.push_back(a) ;
 } ;
@@ -82,10 +98,7 @@ void wypozyczalnia::UsunKlienta(int a) {
     ludzie.erase(ludzie.begin()+a) ;
 } ;
 void wypozyczalnia::Zmien(corobic ab, int cd){
-    zmiana yyy;
-    yyy.ab=ab ;
-    yyy.cd=cd ;
-    zmienianie.push_back(yyy) ;
+    zmienianie.push_back(zmiana(ab, cd)) ;
   } ;
 void wypozyczalnia::aktualizacja(fstream baza[]){
       while(!zmienianie.empty()){
