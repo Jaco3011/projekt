@@ -70,10 +70,10 @@ bool b=true ;
    } ;
    if(b){
     while(s[0]!=32){
-        s.erase(0) ;
+        s.erase(0,1) ;
     } ;
     while(s[0]==32){
-        s.erase(0) ;
+        s.erase(0,1) ;
     } ;
    } ;
    nazwa = s ;
@@ -86,9 +86,10 @@ wypozyczalnia::~wypozyczalnia(){
 };
 void wypozyczalnia::DodajKlienta(klient a){
   ludzie.push_back(a) ;
+  this->Zmien(dodaj, (ludzie.size()-1)) ;
 } ;
 bool wypozyczalnia::IstnienieKlienta(int a) {
-    if (ludzie.size()>=a){
+    if (ludzie.size()<=a){
       return false ;
     } else {
       return true ;
@@ -96,21 +97,38 @@ bool wypozyczalnia::IstnienieKlienta(int a) {
 } ;
 void wypozyczalnia::UsunKlienta(int a) {
     ludzie.erase(ludzie.begin()+a) ;
+    this->Zmien(usun, a) ;
 } ;
 void wypozyczalnia::Zmien(corobic ab, int cd){
+    switch(ab){
+case 0:
+    for(zmiana x : this->zmienianie){
+      if (x.cd>cd){
+        x.cd++ ;
+      } ;
+    };
+case 1:
+    for(zmiana x : this->zmienianie){
+      if (x.cd>cd){
+        x.cd-- ;
+      } ;
+    };
+    deafult:
+        break;
+    } ;
     zmienianie.push_back(zmiana(ab, cd)) ;
   } ;
 void wypozyczalnia::aktualizacja(fstream baza[]){
-      while(!zmienianie.empty()){
-            przesun(zmienianie.front().cd, &baza[0]) ;
-            przesun(zmienianie.front().cd, &baza[2]) ;
+      while(!zmienianie.size()>0){
+            przesun(zmienianie.front().cd, &(baza[0])) ;
+            przesun(zmienianie.front().cd, &(baza[2])) ;
          switch((zmienianie.front()).ab){
             case 0 :
                 {
                baza[0] << this->ludzie[zmienianie.front().cd].imie << " " << this->ludzie[zmienianie.front().cd].nazwisko << " " << this->ludzie[zmienianie.front().cd].wiek << endl ;
                baza[2] << endl ;
-               (baza[2]).seekg(-1, (baza[2]).cur) ;
-               (baza[2]).seekp(-1, (baza[2]).cur) ;
+               (baza[2]).seekg(-2, (baza[2]).cur) ;
+               (baza[2]).seekp(-2, (baza[2]).cur) ;
                list<int>::iterator it ;
                for (it=(ludzie[zmienianie.front().cd].itemki.begin()); it!=(ludzie[zmienianie.front().cd].itemki.end()); it++){
                   baza[2] << *it << " " ;
@@ -177,6 +195,7 @@ void wypozyczalnia::aktualizacja(fstream baza[]){
             } ;
          (this->zmienianie).pop_front() ;
     } ; //koniec while
+    zmienianie.clear() ;
 };
 bool wypozyczalnia::przedmiotwypozyczony (int a)
 {   if (przedmioty.size()<a){

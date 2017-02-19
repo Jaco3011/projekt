@@ -21,7 +21,7 @@ bool wszystkodobrze(int a, fstream dane[]){
 };
 void wczytajbaze (int a, fstream pliki[], string sciezki[]){
     for(int i=0; i<a; i++){
-        (pliki[i]).open((sciezki[i]).c_str(), ios::in|ios::out) ;
+        (pliki[i]).open((sciezki[i]).c_str(), std::ios::out | std::ios::in) ;
     };
 };
 bool wczytywanie(fstream * dane, string * sciezka, string dokad[]){
@@ -75,6 +75,7 @@ void WypiszMenu(bool czy){
   cout << "Q - spróbuj wczytać bazę danych jeszcze raz (z obecnych ścieżek)" << endl ;
   cout << "W - podaj nowy adres do bazy danych" << endl ;
   } ;
+  cout << "Z - wyjście z programu" << endl ;
 } ;
 void DawajInty (list <int> * liczby, string s){
   (*liczby).clear();
@@ -105,14 +106,14 @@ void DawajInty (list <int> * liczby, string s){
   (*liczby).unique() ;
 } ;
 void przesun (int n, fstream * plik) {
-  (*plik).seekg(0) ;
-  (*plik).seekp(0) ;
+  (*plik).seekg(0, (*plik).beg) ;
+  (*plik).seekp(0, (*plik).beg) ;
   int a=0 ;
   while(a<n){
     if ((*plik).get()==10){
       a++ ;
     } ;
-    (*plik).seekg(1, (*plik).cur) ;
-    (*plik).seekp(1, (*plik).cur) ;
+    (*plik).seekg(2, (*plik).cur) ;
+    (*plik).seekp(2, (*plik).cur) ;
   } ;
 } ;
