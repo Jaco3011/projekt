@@ -1,4 +1,4 @@
 # projekt
 Projekt szkolny
-Wymaga kompilatora obslugującego C++11
-Nieprzetestowany
+Wymaga kompilatora obsługującego C++11
+Jeszcze nie wszystko działa (zapis)
