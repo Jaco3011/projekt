@@ -56,6 +56,8 @@ class wypozyczalnia {
   bool IstnienieKlienta(int a) ;
   void UsunKlienta(int a) ;
   void Zmien(corobic ab, int cd) ;
+  bool ostatni(klient * a) ;
+  void aktualizacja(fstream baza[], string sciezki[]) ;
   void aktualizacja(fstream baza[]) ;
   bool przedmiotwypozyczony(int a) ;
   void wyczysc() ;

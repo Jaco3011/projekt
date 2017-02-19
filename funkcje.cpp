@@ -21,7 +21,7 @@ bool wszystkodobrze(int a, fstream dane[]){
 };
 void wczytajbaze (int a, fstream pliki[], string sciezki[]){
     for(int i=0; i<a; i++){
-        (pliki[i]).open((sciezki[i]).c_str(), std::ios::out | std::ios::in) ;
+        (pliki[i]).open((sciezki[i]).c_str(), std::ios::app | std::ios::out | std::ios::in) ;
     };
 };
 bool wczytywanie(fstream * dane, string * sciezka, string dokad[]){
@@ -116,4 +116,11 @@ void przesun (int n, fstream * plik) {
     (*plik).seekg(2, (*plik).cur) ;
     (*plik).seekp(2, (*plik).cur) ;
   } ;
+} ;
+string dostringa(int a){
+    string b ;
+    char * c = new char[b.size()] ;
+    b=itoa(a, c, 10) ;
+    delete [] c ;
+    return b ;
 } ;

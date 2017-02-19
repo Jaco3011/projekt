@@ -12,4 +12,5 @@ bool wczytywanie(fstream * dane, string * sciezka, string dokad[]) ;
 void WypiszMenu(bool czy) ;
 void DawajInty(list <int> * liczby, string s) ;
 void przesun (int n, fstream * plik) ;
+string dostringa (int a) ;
 #endif

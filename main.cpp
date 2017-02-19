@@ -37,10 +37,13 @@ int main () {
           } ;
         } ;
         wczytajbaze(3, baza, sciezki) ;
-        if (wszystkodobrze(3, baza)){
+        if (wszystkodobrze(3, baza)){           //procedura wczytywania
           poprawnie = true ;
-          //procedura wczytywania
           string wejs ;
+          for (int i=0; i<3 ;i++){
+                baza[i].seekg(0) ;
+                baza[i].seekp(0) ;
+          } ;
           while(!baza[0].eof()){ //wczytywanie klientów
             getline(baza[0], wejs) ;
             Ten.DodajKlienta(klient(wejs)) ;
@@ -54,9 +57,9 @@ int main () {
           while(!baza[2].eof()){ //wczytywanie listy wypożyczonych przedmiotów
             getline(baza[2], wejs) ;
             DawajInty(&liczby, wejs) ;
-            Ten.ludzie[ii].itemki==liczby ;
+            swap(Ten.ludzie[ii].itemki,liczby) ;
             ii++ ;
-            if(ii>=Ten.ludzie.size())
+            if(ii>Ten.ludzie.size())
               break ;
           } ; //koniec while
           cout << "Pykło" << endl ;
@@ -202,6 +205,21 @@ int main () {
             };
           } ;
           break ;
+      case 'O':
+      case 'o':
+        cout << "Podaj numer przedmiotu: " ;
+        int a ;
+        cin >> a ;
+        if(a>=Ten.przedmioty.size()){
+            cout << "Taki przedmiot nie istnieje" << endl;
+        } else {
+            if(Ten.przedmiotwypozyczony(a)){
+                cout << "Przedmiot dostępny" << endl ;
+            } else{
+                cout << "Przedmio jest wypożyczony" << endl ;
+            } ;
+        } ;
+        break ;
       case 'P':
       case 'p':
           if(poprawnie){
@@ -226,7 +244,7 @@ int main () {
     case 'S':
       case 's':
         if(poprawnie){
-          Ten.aktualizacja(baza) ;
+          Ten.aktualizacja(baza, sciezki) ;
           for (int i=0; i<3 ; i++) {
           baza[i].flush() ;
         } ;
@@ -262,7 +280,7 @@ int main () {
       case 'Z':
       case 'z':
           if(poprawnie){
-            Ten.aktualizacja(baza) ;
+            Ten.aktualizacja(baza, sciezki) ;
           } ;
         for (int i=0; i<3 ; i++) {
             try{

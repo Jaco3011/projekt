@@ -118,14 +118,52 @@ case 1:
     } ;
     zmienianie.push_back(zmiana(ab, cd)) ;
   } ;
+bool wypozyczalnia::ostatni (klient * a){
+    return (a==&(ludzie[ludzie.size()-1])) ;
+} ;
+void wypozyczalnia::aktualizacja(fstream baza[], string sciezki[]){
+    for (int i=0; i<3 ; i+=2){
+        baza[i].flush() ;
+        baza[i].close() ;
+        baza[i].open(sciezki[i], ios::trunc| ios::out | ios::app);
+    };
+    for (klient x : ludzie){
+        baza[0] << x.imie << " " << x.nazwisko << " " << x.wiek ;
+        for (int y : x.itemki) {
+            baza[2] << y ;
+            baza[2] << " " ;
+        } ;
+        if(!this->ostatni(&x)){
+            baza[0] << endl ;
+            baza[2] << endl ;
+        } ;
+    } ;
+    for (int i=0; i<3; i+=2){
+        baza[i].flush() ;
+        baza[i].close() ;
+        baza[i].open(sciezki[i], ios::in | ios::out);
+    } ;
+} ;
 void wypozyczalnia::aktualizacja(fstream baza[]){
+    string bufor0 ;
+    string buf0 ;
+    string cos=" " ;
       while(!zmienianie.size()>0){
             przesun(zmienianie.front().cd, &(baza[0])) ;
             przesun(zmienianie.front().cd, &(baza[2])) ;
          switch((zmienianie.front()).ab){
             case 0 :
                 {
-               baza[0] << this->ludzie[zmienianie.front().cd].imie << " " << this->ludzie[zmienianie.front().cd].nazwisko << " " << this->ludzie[zmienianie.front().cd].wiek << endl ;
+                buf0=dostringa(this->ludzie[zmienianie.front().cd].wiek) ;
+                bufor0 = this->ludzie[zmienianie.front().cd].imie.c_str() ;
+                bufor0 += cos.c_str() ;
+                bufor0 += this->ludzie[zmienianie.front().cd].nazwisko.c_str() ;
+                bufor0 += cos.c_str() ;
+                bufor0 += buf0.c_str() ;
+                baza[0].write(bufor0.c_str(), bufor0.size()) ;
+                if (!baza[0].eof()){
+                baza[0] << endl ;
+                } ;
                baza[2] << endl ;
                (baza[2]).seekg(-2, (baza[2]).cur) ;
                (baza[2]).seekp(-2, (baza[2]).cur) ;
@@ -177,7 +215,13 @@ void wypozyczalnia::aktualizacja(fstream baza[]){
                 for(int i=0 ; i<costam ; i++){
                     baza[2] << '' ;
                 } ;
-                baza[0] << this->ludzie[zmienianie.front().cd].imie << " " << this->ludzie[zmienianie.front().cd].nazwisko << " " << this->ludzie[zmienianie.front().cd].wiek ;
+                buf0=dostringa(this->ludzie[zmienianie.front().cd].wiek) ;
+                bufor0 = this->ludzie[zmienianie.front().cd].imie.c_str() ;
+                bufor0 += cos.c_str() ;
+                bufor0 += this->ludzie[zmienianie.front().cd].nazwisko.c_str() ;
+                bufor0 += cos.c_str() ;
+                bufor0 += buf0.c_str() ;
+                baza[0].write(bufor0.c_str(), bufor0.size()) ;
                 list<int>::iterator it ;
                for (it=(ludzie[zmienianie.front().cd].itemki.begin()); it!=(ludzie[zmienianie.front().cd].itemki.end()); it++){
                   baza[2] << *it << " " ;
@@ -197,8 +241,8 @@ void wypozyczalnia::aktualizacja(fstream baza[]){
     } ; //koniec while
     zmienianie.clear() ;
 };
-bool wypozyczalnia::przedmiotwypozyczony (int a)
-{   if (przedmioty.size()<a){
+bool wypozyczalnia::przedmiotwypozyczony (int a){
+    if (przedmioty.size()<a){
       return false ;
    } else {
       list<int>::iterator it ;
