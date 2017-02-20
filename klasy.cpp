@@ -56,6 +56,18 @@ void klient::TenKlient(){
     cout << "Nazwisko: "<< nazwisko << endl ;
     cout << "wiek: " << wiek << endl ;
 } ;
+bool klient::porownaj(klient a){
+    if(imie!=a.imie){
+        return false ;
+    } ;
+    if(nazwisko!=a.nazwisko){
+        return false ;
+    } ;
+    if(wiek!=a.wiek){
+        return false ;
+    } ;
+    return true ;
+} ;
 nasze::nasze(){
 } ;
 nasze::nasze(string s)
@@ -119,30 +131,40 @@ case 1:
     zmienianie.push_back(zmiana(ab, cd)) ;
   } ;
 bool wypozyczalnia::ostatni (klient * a){
-    return (a==&(ludzie[ludzie.size()-1])) ;
+    return (a==&(*ludzie.rbegin())) ;
 } ;
 void wypozyczalnia::aktualizacja(fstream baza[], string sciezki[]){
     for (int i=0; i<3 ; i+=2){
+        try{
         baza[i].flush() ;
         baza[i].close() ;
-        baza[i].open(sciezki[i], ios::trunc| ios::out | ios::app);
+        }
+        catch(...){
+        } ;
+        (baza[i]).clear() ;
+        baza[i].open(sciezki[i], ios::trunc | ios::out);
     };
     for (klient x : ludzie){
         baza[0] << x.imie << " " << x.nazwisko << " " << x.wiek ;
         for (int y : x.itemki) {
-            baza[2] << y ;
             baza[2] << " " ;
+            baza[2] << y ;
         } ;
-        if(!this->ostatni(&x)){
+       if(!x.porownaj(*ludzie.rbegin())){
             baza[0] << endl ;
             baza[2] << endl ;
-        } ;
+       } ;
     } ;
-    for (int i=0; i<3; i+=2){
+    for (int i=0; i<3; i++){
+            try{
         baza[i].flush() ;
         baza[i].close() ;
-        baza[i].open(sciezki[i], ios::in | ios::out);
+        }
+        catch(...){
+        } ;
+        baza[i].clear() ;
     } ;
+    wczytajbaze(3, baza, sciezki) ;
 } ;
 void wypozyczalnia::aktualizacja(fstream baza[]){
     string bufor0 ;

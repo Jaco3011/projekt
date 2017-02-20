@@ -35,6 +35,7 @@ class klient {
   ~klient() ;
   bool czysty() ;
   void TenKlient() ;
+  bool porownaj(klient a) ;
 } ; //koniec class kilent
 class nasze {
   public:

@@ -21,7 +21,8 @@ bool wszystkodobrze(int a, fstream dane[]){
 };
 void wczytajbaze (int a, fstream pliki[], string sciezki[]){
     for(int i=0; i<a; i++){
-        (pliki[i]).open((sciezki[i]).c_str(), std::ios::app | std::ios::out | std::ios::in) ;
+        (pliki[i]).clear() ;
+        (pliki[i]).open((sciezki[i]).c_str(), std::ios::out | std::ios::in) ;
     };
 };
 bool wczytywanie(fstream * dane, string * sciezka, string dokad[]){

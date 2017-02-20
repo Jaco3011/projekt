@@ -28,6 +28,7 @@ int main () {
     switch(petla) {
         case 'Q':
       case 'q' :
+        Ten.wyczysc() ;
         for (int i=0; i<3 ; i++) {
                 try{
           baza[i].flush() ;
@@ -59,7 +60,7 @@ int main () {
             DawajInty(&liczby, wejs) ;
             swap(Ten.ludzie[ii].itemki,liczby) ;
             ii++ ;
-            if(ii>Ten.ludzie.size())
+            if(ii>=Ten.ludzie.size())
               break ;
           } ; //koniec while
           cout << "Pykło" << endl ;
